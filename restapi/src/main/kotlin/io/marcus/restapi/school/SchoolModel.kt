@@ -15,7 +15,7 @@ class SchoolModel {
     var id: Long? = null
 
     @NotBlank
-    @Size(max=30, min=3, message="School name can not be less than 3 or more than 30 characters")
+    @Size(max=80, min=3, message="School name can not be less than 3 or more than 80 characters")
     @Column(name="school_name")
     var schoolName: String? = null
 

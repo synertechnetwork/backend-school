@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api-v1/schools")
 class SchoolRestApi(private val schoolService: SchoolService) {
 
-    @PostMapping("/")
+    @PostMapping("/create")
     fun createSchool(@RequestBody schoolRequest: SchoolRequest): ResponseEntity<SchoolModel>{
         return ResponseEntity.ok().body(schoolService.createSchool(schoolRequest))
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     fun getAllSchools(): ResponseEntity<List<SchoolModel>>{
        return ResponseEntity.ok().body(schoolService.getAllSchools())
     }
@@ -29,8 +29,8 @@ class SchoolRestApi(private val schoolService: SchoolService) {
     }
 
     @DeleteMapping("/{id}")
-    fun deleteSchoolById(@PathVariable id: Long): ResponseEntity<String>{
-        return ResponseEntity.ok().body("School Deleted Successfully")
+    fun deleteSchoolById(@PathVariable id: Long): ResponseEntity<Unit> {
+        return ResponseEntity.ok().body(schoolService.deleteSchoolById(id))
     }
 
     // Custom query endpoints
