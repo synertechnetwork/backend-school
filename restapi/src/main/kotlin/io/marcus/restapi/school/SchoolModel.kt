@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size
 
 
 @Entity
-@Table(name = "school")
+@Table(name = "schools")
 class SchoolModel {
 
     @Id
