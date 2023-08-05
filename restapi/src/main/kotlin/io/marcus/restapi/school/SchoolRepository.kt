@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface SchoolRepository: JpaRepository<SchoolModel, Long> {
 
 
-    fun findBySchoolAddress(addrss: String?): SchoolModel?
+    fun findBySchoolAddress(address: String?): SchoolModel?
 
     fun findBySchoolName(schoolName: String): SchoolModel?
 
