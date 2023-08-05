@@ -28,5 +28,6 @@ data class SubjectModel (
             inverseJoinColumns = [JoinColumn(name = "teacher_id", referencedColumnName = "id")])
     var subjectTeachers: MutableList<TeacherModel> = mutableListOf()
 
+    //each subject could contain its curriculum, for all applicable levels
 
 )

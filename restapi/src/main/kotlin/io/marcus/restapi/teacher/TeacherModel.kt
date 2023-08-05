@@ -24,4 +24,5 @@ data class TeacherModel(
 
         @Column(name="teacher_qualifications")
         var teacherQualifications: MutableList<String> = mutableListOf()
-        )
+
+)
