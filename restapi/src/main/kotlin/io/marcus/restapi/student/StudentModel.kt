@@ -18,10 +18,16 @@ data class StudentModel(
         @Column(name="student_age")
         var studentAge: Int,
 
-        @Column(name="student_classroom")
+        @ManyToOne  // or @OneToOne depending on the relation
+        @JoinColumn(name="classroom_id")  // referencing the foreign key column in the students table
         var studentClassroom: ClassroomModel,
 
-        @Column(name="student_subjects")
-        var studentSubjects: MutableList<SubjectModel> = mutableListOf()
+//        @ManyToMany
+//        @JoinTable(
+//                name = "student_subject",
+//                joinColumns = [JoinColumn(name = "student_id")],
+//                inverseJoinColumns = [JoinColumn(name = "subject_id")]
+//        )
+//        var studentSubjects: MutableList<SubjectModel> = mutableListOf()
 
 )

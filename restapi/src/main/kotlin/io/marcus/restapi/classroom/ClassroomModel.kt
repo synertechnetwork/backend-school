@@ -7,26 +7,41 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "classrooms")
-data class ClassroomModel(
+class ClassroomModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    var id: Long = 0
 
-    @Column(name="classroom_name")
-    var classroomName: String,
+    @Column(name = "classroom_name")
+    var name: String = ""
 
-    @Column(name="classroom_description")
-    var classroomDescription: String,
+    @Column(name = "classroom_description")
+    var classroomDescription: String = ""
 
-    @Column(name="classroom_students")
-    var classroomStudents: MutableList<StudentModel> = mutableListOf(),
+    // Assuming one classroom has many students, and one student belongs to one classroom
+    @OneToMany(mappedBy = "studentClassroom")
+    var classroomStudents: MutableList<StudentModel> = mutableListOf()
 
-    @Column(name="classroom_teachers")
-    var classroomTeachers: MutableList<TeacherModel> = mutableListOf(),
+    // Assuming a teacher can be in many classrooms and a classroom can have many teachers
+    @ManyToMany
+    @JoinTable(
+        name = "classroom_teacher",
+        joinColumns = [JoinColumn(name = "classroom_id")],
+        inverseJoinColumns = [JoinColumn(name = "teacher_id")]
+    )
+    var classroomTeachers: MutableList<TeacherModel> = mutableListOf()
 
-    @Column(name="classroom_subjects")
-    var classroomSubjects: MutableList<SubjectModel> = mutableListOf(),
+    // Assuming a subject can be in many classrooms and a classroom can have many subjects
+    @ManyToMany
+    @JoinTable(
+        name = "classroom_subject",
+        joinColumns = [JoinColumn(name = "classroom_id")],
+        inverseJoinColumns = [JoinColumn(name = "subject_id")]
+    )
+    var classroomSubjects: MutableList<SubjectModel> = mutableListOf()
 
-//    @Column(name="classroom_seating_arrangement")
-//    var seatingArrangement: MutableList<String> = mutableListOf()
-)
+    // If you want to represent seating arrangement, it's more complex and depends on how you plan to represent it
+    // @Column(name="classroom_seating_arrangement")
+    // var seatingArrangement: MutableList<String> = mutableListOf()
+}

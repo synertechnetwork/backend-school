@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface StudentRepository: JpaRepository<StudentModel, Long> {
 
-    fun findStudentByName(studentName: String): StudentModel?
+    fun findStudentByStudentName(studentName: String): StudentModel?
 
-    fun findStudentsByAge(studentAge: Int): MutableList<StudentModel>?
+    fun findStudentsByStudentAge(studentAge: Int): MutableList<StudentModel>?
 
-    fun findStudentsByClassroomName(classroomName: String): MutableList<StudentModel>?
+//    fun findStudentsByClassroomName(classroomName: String): MutableList<StudentModel>?
 
-    fun findStudentsBySubject(subjectName: String): MutableList<StudentModel>?
+//    fun findStudentsByStudentSubjects(subjectName: String): MutableList<StudentModel>?
 
 }

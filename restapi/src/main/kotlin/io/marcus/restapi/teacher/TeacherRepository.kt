@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface TeacherRepository: JpaRepository<TeacherModel, Long>  {
 
-    fun findByName(teacherName: String): TeacherModel?
+    fun findByTeacherName(teacherName: String): TeacherModel?
 
-    fun findByClassroomName(classroomName: String): MutableList<TeacherModel>?
+//    fun findByClassroomName(classroomName: String): MutableList<TeacherModel>?
 
 }

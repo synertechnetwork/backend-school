@@ -24,8 +24,8 @@ data class SubjectModel (
     var subjectDescription: String,
 
     @ManyToMany(cascade = [CascadeType.ALL])
-    @JoinTable(name = "subject_teacher", joinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "id")],
-            inverseJoinColumns = [JoinColumn(name = "teacher_id", referencedColumnName = "id")])
+    @JoinTable(name = "subject_teacher", joinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "subject_id")],
+            inverseJoinColumns = [JoinColumn(name = "teacher_id", referencedColumnName = "teacher_id")])
     var subjectTeachers: MutableList<TeacherModel> = mutableListOf()
 
     //each subject could contain its curriculum, for all applicable levels
